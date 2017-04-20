@@ -66,7 +66,7 @@ $tabtermrelationships = $DB_PREFIX . 'term_relationships';
 //    $link = mysql_connect($DB_HOST,$DB_USER,$DB_PASSWORD) or die('Cannot connect to the Database');
 //    mysql_select_db($DB_NAME,$link) or die('Cannot select the Database');
 
-    isset($_GET['searchterm']) ? $searchterm = mysql_real_escape_string($_GET['searchterm']) : $searchterm = NULL;
+    isset($_GET['searchterm']) ? $searchterm = $_GET['searchterm'] : $searchterm = NULL;
 
     /* grab the POIs from the db  */
     $query = "SELECT
@@ -89,7 +89,7 @@ $tabtermrelationships = $DB_PREFIX . 'term_relationships';
                 AND p.post_status= 'publish'";
 
     if(isset($_GET['slug'])){
-        $query .=  " AND t.slug = '" .  mysql_real_escape_string($_GET['slug'])  . "'";
+        $query .=  " AND t.slug = '" .  $_GET['slug']  . "'";
     }
 
     $query .= " GROUP BY p.ID";
